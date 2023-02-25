@@ -1,0 +1,12 @@
+#cate-nav {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 0;
+}
+
+#cate-nav > * {
+    padding: 1rem;
+}

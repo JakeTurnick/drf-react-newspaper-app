@@ -1,0 +1,6 @@
+.link-list {
+    color: hsl(0, 0%, 90%);
+    border-right: solid 2px hsla(240, 50%, 90%, .8);
+    width: 20%;
+}
+

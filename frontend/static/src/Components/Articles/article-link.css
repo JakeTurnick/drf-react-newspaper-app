@@ -1,0 +1,20 @@
+.link-li {
+    padding: 1rem;
+    width: 100%;
+}
+
+.article-link {
+    text-decoration: none;
+    color: hsl(0, 0%, 90%);
+    background-color: hsla(0, 0%, 0%, 0);
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    width: 80%;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+    color: hsl(0, 0%, 100%);
+    background-color: hsla(220, 60%, 80%, .1);
+}

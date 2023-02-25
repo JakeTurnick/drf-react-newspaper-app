@@ -1,0 +1,13 @@
+#article-view {
+    width: 80%;
+    padding-left: 1rem;
+}
+
+#article-view {
+    color: hsl(0, 0%, 90%);
+}
+
+#article-view > h1 {
+    text-decoration: underline;
+    line-height: 1.5rem;
+}

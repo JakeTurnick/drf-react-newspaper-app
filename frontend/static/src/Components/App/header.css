@@ -1,0 +1,42 @@
+header {
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    color: hsl(0, 0, 90%);
+    border-bottom: solid 2px hsl(200, 60%, 60%);
+}
+
+.header-link {
+    text-decoration: none;
+    padding: 1rem;
+}
+
+a {
+    color: hsl(200, 75%, 75%);
+    font-weight: 700;
+}
+
+a:hover {
+    background-color: hsl(200, 60%, 60%);
+    color: hsl(240, 40%, 40%);
+}
+
+#sign-out {
+    color: hsl(200, 75%, 75%);
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: .5rem;
+
+}
+#sign-out:hover {
+    background-color: hsl(0, 60%, 70%);
+    color: hsl(240, 40%, 40%);
+    border-radius: 8px;
+    text-decoration: none;
+    padding: .5rem;
+}

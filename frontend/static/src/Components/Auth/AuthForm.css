@@ -1,0 +1,36 @@
+#form-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#auth-form {
+    max-width: 600px;
+    width: 75%;
+    margin: auto;
+}
+
+#auth-form > * {
+    margin: 1rem;
+}
+
+
+.form-group > label {
+    color: hsl(0, 0%, 90%);
+}
+
+.form-group > input {
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(220, 60%, 5%);;
+}
+
+.form-group > input:active {
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(220, 60%, 5%);;
+}
+
+
+
+

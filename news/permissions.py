@@ -1,0 +1,18 @@
+from rest_framework import permissions
+
+
+class isPublishedOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.author == request.user
+
+
+class isAuthor(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.author == request.user
+
+
+class isPublisher(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.org == request.user.org

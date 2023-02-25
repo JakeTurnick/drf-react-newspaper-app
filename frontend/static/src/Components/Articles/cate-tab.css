@@ -1,0 +1,14 @@
+.cate-button {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: hsla(0, 0%, 0%, 0);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.cate-button:hover {
+    text-decoration: underline;
+    background-color: hsla(240, 50%, 90%, .1);
+}

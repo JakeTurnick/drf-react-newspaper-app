@@ -50,7 +50,9 @@ INSTALLED_APPS = [
 
 
     # local
+    'api.apps.ApiConfig',
     'accounts.apps.AccountsConfig',
+    'news.apps.NewsConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -157,3 +159,14 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# https://docs.djangoproject.com/en/4.1/topics/email/#console-backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Static file directories
+# https://docs.djangoproject.com --> staticfiles-dirs
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static'),)
+# Tuple () for multiple static file directories
+REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
+# only 1 react app directory
