@@ -17,7 +17,7 @@ function LoginForm(props) {
 	});
 
 	const handleError = (err) => {
-		console.warm(err);
+		console.warn(err);
 	};
 
 	const handleInput = (e) => {
@@ -42,7 +42,9 @@ function LoginForm(props) {
 			},
 			body: JSON.stringify(user),
 		};
-		const response = await fetch("dj-rest-auth/login/", options);
+		const response = await fetch("dj-rest-auth/login/", options).catch(
+			handleError
+		);
 		if (!response.ok) {
 			throw new Error("Could not login / authenticate user");
 		}
@@ -54,18 +56,18 @@ function LoginForm(props) {
 		navigate("/home");
 	};
 
-	const getBg = async (e) => {
-		const options = {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept-Version": "v1",
-			},
-			body: "some text",
-		};
-		const response = await fetch("https://api.unsplash.com/", options);
-		const data = await response.json();
-	};
+	// const getBg = async (e) => {
+	// 	const options = {
+	// 		method: "GET",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"Accept-Version": "v1",
+	// 		},
+	// 		body: "some text",
+	// 	};
+	// 	const response = await fetch("https://api.unsplash.com/", options);
+	// 	const data = await response.json();
+	// };
 
 	return (
 		<div id="form-container">

@@ -16,7 +16,7 @@ function SignupForm(props) {
 	});
 
 	const handleError = (err) => {
-		console.warm(err);
+		console.warn(err);
 	};
 
 	const handleInput = (e) => {
@@ -31,7 +31,7 @@ function SignupForm(props) {
 		e.preventDefault();
 		// testing functionality
 		console.log("User info:", user);
-		if (user.password1 != user.password2) {
+		if (user.password1 !== user.password2) {
 			setError("Passwords do not match");
 		}
 
@@ -44,7 +44,9 @@ function SignupForm(props) {
 			},
 			body: JSON.stringify(user),
 		};
-		const response = await fetch("dj-rest-auth/registration/", options);
+		const response = await fetch("dj-rest-auth/registration/", options).catch(
+			handleError
+		);
 		if (!response.ok) {
 			throw new Error("Could not create user account");
 		}

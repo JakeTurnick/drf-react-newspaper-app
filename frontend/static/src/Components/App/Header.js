@@ -1,10 +1,5 @@
 import "./header.css";
-import {
-	useNavigate,
-	NavLink,
-	useNavigate,
-	useOutletContext,
-} from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function Header(props) {
@@ -27,7 +22,7 @@ function Header(props) {
 		props.setAuth(false);
 		props.setCurrUser(null);
 		Cookies.remove("Authorization");
-		navigate("/home");
+		navigate("home");
 	};
 
 	return (
@@ -37,6 +32,11 @@ function Header(props) {
 					Home
 				</NavLink>
 
+				{props.isAuth && (
+					<NavLink className="header-link" to="/profile">
+						Profile test
+					</NavLink>
+				)}
 				{props.isAuth && (
 					<NavLink className="header-link" to="/test">
 						Test

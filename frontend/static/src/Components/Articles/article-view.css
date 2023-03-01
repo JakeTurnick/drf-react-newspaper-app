@@ -1,3 +1,5 @@
+/* Article view */
+
 #article-view {
     width: 80%;
     padding-left: 1rem;
@@ -10,4 +12,65 @@
 #article-view > h1 {
     text-decoration: underline;
     line-height: 1.5rem;
+}
+
+
+/* Edit view - same file */
+
+
+#edit-view {
+    width: 80%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#edit-view > input, textarea, button {
+    padding: .5rem;
+    margin: 1rem;
+    background-color: hsla(0, 0%, 0%, 0);
+    color: white;
+    border: 2px solid hsla(240, 80%, 90%, .9 );
+}
+
+#edit-toggle {
+    width: 20%;
+    margin: 1rem;
+    border: none;
+    background-color: hsla(120, 80%, 80%, 1);
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#edit-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+#edit-text {
+    font-size: 1.5rem;
+}
+
+.choice {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.choice > button {
+    width: 30%;
+}
+
+#update:hover {
+    background-color: hsla(240, 80%, 90%, .9 );
+    color: black;
+}
+
+#submit:hover {
+    background-color: hsla(120, 80%, 80%, 1);
+    color: black;
+}
+
+#delete:hover {
+    background-color: hsla(0, 80%, 80%, .9 );
+    color: black;
 }

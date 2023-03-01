@@ -1,4 +1,4 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import "./cate-tab.css";
 
 function CateTab(props) {

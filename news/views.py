@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAdminUser
 from .models import Post
-from .serializers import PostSerializer, CateSerializer
+from .serializers import PostSerializer
 # from .permissions import isAuthorOrReadOnly, isPublisher
 
 
@@ -23,22 +23,9 @@ class PostDetailAPIView(generics.RetrieveAPIView):
 
 
 class PublishedListAPIView(generics.ListAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.order_by('-created_at')
     serializer_class = PostSerializer
     permission_classes = (AllowAny,)
-
-
-class SubmittedListAPIView(generics.ListAPIView):
-    queryset = Post.objects.filter(is_submitted=True)
-    serializer_class = PostSerializer
-    permission_classes = (IsAdminUser,)
-
-
-class DraftListAPIView(generics.ListAPIView):
-    serializer_class = PostSerializer
-
-    def get_queryset(self):
-        return Post.objects.filter(author=self.request.user, is_submitted=False, is_published=False)
 
 
 class CatePostListAPIView(generics.ListAPIView):
@@ -50,15 +37,64 @@ class CatePostListAPIView(generics.ListAPIView):
         return Post.objects.filter(category=cate)
 
 
-class PublishedListAPIView(generics.ListAPIView):
-    queryset = Post.objects.order_by('-created_at')
+class SubmittedListAPIView(generics.ListAPIView):
+    queryset = Post.objects.filter(is_submitted=True, is_published=False)
     serializer_class = PostSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminUser,)
 
 
-# class AuthorPostsAPIView(generics.ListCreateAPIView):
+class SubmittedRetrieveAPIView(generics.RetrieveDestroyAPIView):
+    serializer_class = PostSerializer
+    permission_classes = (IsAdminUser,)
+
+    def get_queryset(self):
+        return Post.objects.filter(is_submitted=True, is_published=False)
+
+
+class DraftListAPIView(generics.ListAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        if (self.request.user.is_superuser == True):
+            return Post.objects.filter(is_published=False)
+        else:
+            return Post.objects.filter(author=self.request.user, is_submitted=False, is_published=False)
+
+
+class DraftRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        if (self.request.user.is_superuser == True):
+            return Post.objects.filter(pk=pk, is_published=False)
+        else:
+            return Post.objects.filter(pk=pk, author=self.request.user, is_submitted=False, is_published=False)
+
+
+# class SubmittedListAPIView(generics.ListAPIView):
 #     serializer_class = PostSerializer
-#     permission_classes = (isAuthorOrReadOnly)
 
 #     def get_queryset(self):
-#         return Post.objects.filter()
+#         if (self.request.user.is_superuser == True):
+#             return Post.objects.filter(is_published=False)
+#         else:
+#             return Post.objects.filter(author=self.request.user, is_submitted=True, is_published=False)
+
+
+# class SubmittedRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = PostSerializer
+
+#     def get_queryset(self):
+#         pk = self.kwargs['pk']
+#         if (self.request.user.is_superuser == True):
+#             return Post.objects.filter(pk=pk, is_published=False)
+#         else:
+#             return Post.objects.filter(pk=pk, author=self.request.user, is_submitted=True, is_published=False)
+
+    # class AuthorPostsAPIView(generics.ListCreateAPIView):
+    #     serializer_class = PostSerializer
+    #     permission_classes = (isAuthorOrReadOnly)
+
+    #     def get_queryset(self):
+    #         return Post.objects.filter()

@@ -1,12 +1,21 @@
-import './article-view.css'
+import "./article-view.css";
 
 function ArticleView(props) {
-    return (
-        <section id="article-view">
-            {props.article.title ? <h1>{props.article.title}</h1> : <h1>Select an article</h1>}
-            {props.article.text ? <p>{props.article.text}</p> : <p></p>}
-        </section>
-    )
+	console.log("ArticleView props: ", props);
+	return (
+		<section id="article-view">
+			{props.currArticle.title ? (
+				<h1>{props.currArticle.title}</h1>
+			) : (
+				<h1>Select an article</h1>
+			)}
+			{props.currArticle.text ? (
+				<p>{props.currArticle.text}</p>
+			) : (
+				<p>Article text here</p>
+			)}
+		</section>
+	);
 }
 
-export default ArticleView
+export default ArticleView;

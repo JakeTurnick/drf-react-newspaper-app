@@ -15,6 +15,14 @@ class Profile(models.Model):
     display_name: models.CharField(max_length=255)
     avatar: models.ImageField(upload_to='profiles/')
 
+    def get_admin_status(self):
+        if self.is_staff:
+            return True
+        elif self.is_superuser:
+            return True
+        else:
+            return False
+
 
 # class Org(models.Model):
 #     members = models.ManyToManyField
