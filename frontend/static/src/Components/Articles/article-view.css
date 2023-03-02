@@ -1,12 +1,17 @@
 /* Article view */
 
 #article-view {
-    width: 80%;
+    width: 90%;
     padding-left: 1rem;
 }
 
 #article-view {
     color: hsl(0, 0%, 90%);
+}
+
+#article-view > * {
+    margin: 1rem 0;
+    line-height: 1rem;
 }
 
 #article-view > h1 {
@@ -19,7 +24,7 @@
 
 
 #edit-view {
-    width: 80%;
+    width: 90%;
     padding-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -46,9 +51,11 @@
 #edit-title {
     font-size: 2rem;
     font-weight: 600;
+    width: 100%;
 }
 #edit-text {
     font-size: 1.5rem;
+    width: 100%;
 }
 
 .choice {
@@ -73,4 +80,13 @@
 #delete:hover {
     background-color: hsla(0, 80%, 80%, .9 );
     color: black;
+}
+
+#publish:hover {
+    background-color: hsla(120, 90%, 70%, .9 );
+    color: black;  
+}
+
+.publish-container {
+    width: 100%;
 }

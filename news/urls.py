@@ -6,7 +6,7 @@ urlpatterns = [
     path('posts/drafts/<int:pk>/', DraftRetrieveAPIView.as_view()),
     path('posts/submitted/', SubmittedListAPIView.as_view()),
     path('posts/submitted/<int:pk>/', SubmittedRetrieveAPIView.as_view()),
-    path('posts/<str:cate>/', CatePostListAPIView.as_view()),
+    path('posts/category/<str:cate>/', CatePostListAPIView.as_view()),
     path('posts/<int:pk>/', PostDetailAPIView.as_view()),
     path('posts/', PublishedListAPIView.as_view()),
 ]

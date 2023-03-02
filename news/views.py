@@ -23,7 +23,7 @@ class PostDetailAPIView(generics.RetrieveAPIView):
 
 
 class PublishedListAPIView(generics.ListAPIView):
-    queryset = Post.objects.order_by('-created_at')
+    queryset = Post.objects.filter(is_published=True).order_by('-created_at')
     serializer_class = PostSerializer
     permission_classes = (AllowAny,)
 

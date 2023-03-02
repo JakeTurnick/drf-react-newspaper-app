@@ -17,6 +17,10 @@ import "./cate-nav.css";
 
 const INITIAL_CATES = [
 	{
+		name: "All",
+		tag: "",
+	},
+	{
 		name: "Business",
 		tag: "bus",
 	},

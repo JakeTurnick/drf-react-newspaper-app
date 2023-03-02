@@ -5,7 +5,6 @@ function ArticleLink(props) {
 		console.log(e.target.value);
 		props.setNewArticle(e.target.value);
 	};
-
 	return (
 		<li className="link-li">
 			<button
@@ -14,7 +13,11 @@ function ArticleLink(props) {
 				onClick={selectArticle}
 			>
 				{props.article.title}
-				<p>By: {props.article.author}</p>
+				{props.article.username ? (
+					<p>By: {props.article.username}</p>
+				) : (
+					<p>unknown</p>
+				)}
 			</button>
 		</li>
 	);

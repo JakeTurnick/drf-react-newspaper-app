@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 const INITIAL_ARTICLE = {
 	title: "Article Title",
 	text: "Article text",
+	username: "someone",
 };
 
 const INITIAL_ARTICLES = ["article 1", "article 2", "Funny comics", "dsytopia"];
@@ -49,9 +50,16 @@ function App() {
 					"X-CSRFToken": Cookies.get("csrftoken"),
 				},
 			};
-			// let category = "";
-			// if (props.currCategory) category = props.currCategory;
-			const response = await fetch(`api_v1/posts/${currCategory}`, options);
+			let response;
+			if (currCategory == "") {
+				response = await fetch(`api_v1/posts`, options);
+			} else {
+				response = await fetch(
+					`api_v1/posts/category/${currCategory}`,
+					options
+				);
+			}
+
 			if (!response.ok) {
 				throw new Error(
 					`unable to get articles based on category: ${currCategory}`

@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Profile
-from .serializer import ProfileSerializer
+from .models import Profile, User
+from .serializers import ProfileSerializer
 
 # Create your views here.
 
 
-class UsersAPIView(generics.RetrieveAPIView):
+class UsersAPIView(generics.ListAPIView):
     serializer_class = ProfileSerializer
-    queryset = Profile.objects.all()
+    queryset = User.objects.all()
 
 
 class UserDetailAPIView(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
 
     def get_queryset(self):
-        user = self.kwargs['user']
-        return Profile.objects.filter(username=user)
+        user = self.kwargs['pk']
+        return Profile.objects.filter(id=user)

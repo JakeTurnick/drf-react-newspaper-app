@@ -4,7 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function LoginForm(props) {
-	const [isAuth, setAuth, setCurrUser] = useOutletContext();
+	const [isAuth, setAuth, setCurrUser, setIsSu] = useOutletContext();
 	const navigate = useNavigate();
 
 	const toggleAuth = () => {
@@ -14,6 +14,7 @@ function LoginForm(props) {
 	const [user, setUser] = useState({
 		username: "",
 		password: "",
+		is_superuser: false,
 	});
 
 	const handleError = (err) => {
@@ -31,7 +32,7 @@ function LoginForm(props) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		// testing functionality
-		console.log("User info:", user);
+		// console.log("User info:", user);
 
 		// uncomment for build
 		const options = {
@@ -49,10 +50,11 @@ function LoginForm(props) {
 			throw new Error("Could not login / authenticate user");
 		}
 		const data = await response.json();
-		console.log("login data: ", data);
+		// console.log("login data: ", data);
 		Cookies.set("Authorization", `Token ${data.key}`);
 		setAuth(true);
-		setCurrUser(user.username.toUpperCase());
+		setIsSu(data.is_superuser);
+		setCurrUser(data.username);
 		navigate("/home");
 	};
 

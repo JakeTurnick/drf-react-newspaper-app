@@ -18,30 +18,38 @@ function Header(props) {
 			throw new Error("Error when signing out");
 		}
 		const data = await response.json();
-		console.log("sign out data: ", data);
+		// console.log("sign out data: ", data);
 		props.setAuth(false);
 		props.setCurrUser(null);
+		props.setIsSu(false);
 		Cookies.remove("Authorization");
-		navigate("home");
+		navigate("/home");
 	};
 
 	return (
 		<header>
 			<nav id="header-nav">
+				{/* ALWAYS VISIBLE */}
 				<NavLink className="header-link" to="/home">
 					Home
 				</NavLink>
-
+				{/* LOGGED IN */}
 				{props.isAuth && (
 					<NavLink className="header-link" to="/profile">
-						Profile test
+						My drafts
 					</NavLink>
 				)}
-				{props.isAuth && (
+				{props.isSu && (
+					<NavLink className="header-link" to="/review">
+						Submitted Review
+					</NavLink>
+				)}
+				{/* {props.isAuth && (
 					<NavLink className="header-link" to="/test">
 						Test
 					</NavLink>
-				)}
+				)} */}
+				{/* NOT LOGGED IN  */}
 				{!props.isAuth && (
 					<NavLink className="header-link" to="/login">
 						Login

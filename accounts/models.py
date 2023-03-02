@@ -15,6 +15,9 @@ class Profile(models.Model):
     display_name: models.CharField(max_length=255)
     avatar: models.ImageField(upload_to='profiles/')
 
+    def __str__(self):
+        return self.user.username
+
     def get_admin_status(self):
         if self.is_staff:
             return True

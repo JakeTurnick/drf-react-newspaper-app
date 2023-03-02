@@ -170,3 +170,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static'),)
 # Tuple () for multiple static file directories
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
 # only 1 react app directory
+
+REST_AUTH = {
+    'TOKEN_SERIALIZER': 'accounts.serializers.CustomTokenSerializer',
+    # using our own serializer instead of default from dj-rest-auth
+    # 'TOKEN_SERIALIZER': 'dj_rest_auth.serializers.TokenSerializer',
+}

@@ -51,7 +51,7 @@ function SignupForm(props) {
 			throw new Error("Could not create user account");
 		}
 		const data = await response.json();
-		console.log("signup response: ", response);
+		// console.log("signup response: ", response);
 		Cookies.set("Authorization", `Token ${data.key}`);
 		setAuth(true);
 		setCurrUser(user.username.toUpperCase());

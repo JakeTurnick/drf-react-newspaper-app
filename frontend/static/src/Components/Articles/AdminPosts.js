@@ -1,23 +1,21 @@
+import "./article-view.css";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
-import ArticleList from "../Articles/ArticleList";
-import ArticleView from "../Articles/ArticleView";
-import EditView from "../Articles/EditView";
+import { useOutletContext } from "react-router-dom";
 import Cookies from "js-cookie";
-import "./User-Posts.css";
-import { useNavigate } from "react-router-dom";
+import ArticleList from "./ArticleList";
+import PublishView from "./PublishView";
 
 const INITIAL_ARTICLE = {
-	title: "Article Title",
-	text: "Article text",
+	title: "Select an article",
+	text: "articles are loaded in the list to the left, click on to see it here!",
 	username: "someone",
 };
 const INITIAL_ARTICLES = ["article 1", "article 2", "Funny comics", "dsytopia"];
 
-function UserPosts(props) {
+function AdminPosts(props) {
 	const [currArticle, setCurrArticle] = useState(INITIAL_ARTICLE);
 	const [newArticle, setNewArticle] = useState("");
-	const navigate = useNavigate();
+	const [isSu] = useOutletContext();
 
 	// Getting specific article when newArticle is changed - sets to currArticle for <ArticleView />
 	useEffect(() => {
@@ -59,6 +57,7 @@ function UserPosts(props) {
 				throw new Error(`unable to get drafts`);
 			}
 			const data = await response.json();
+			console.log("articles:", data);
 			setArticles(data);
 		};
 		getArticles();
@@ -66,17 +65,17 @@ function UserPosts(props) {
 
 	return (
 		<section>
-			<div id="user-post-title">
-				<h1>Your Posts:</h1>
-				<button onClick={() => navigate("/home")}>New post</button>
-			</div>
-			<main>
-				<ArticleList articles={articles} setNewArticle={setNewArticle} />
-				<EditView currArticle={currArticle} />
-				{/* MAKE DraftView - CARBON COPY OF ARTICLEVIEW BUT WITH EDITABLE FIELDS */}
-			</main>
+			{isSu ? (
+				<main>
+					<ArticleList articles={articles} setNewArticle={setNewArticle} />
+					<PublishView currArticle={currArticle} />
+					{/* MAKE DraftView - CARBON COPY OF ARTICLEVIEW BUT WITH EDITABLE FIELDS */}
+				</main>
+			) : (
+				<h1>This page is for admins only</h1>
+			)}
 		</section>
 	);
 }
 
-export default UserPosts;
+export default AdminPosts;
