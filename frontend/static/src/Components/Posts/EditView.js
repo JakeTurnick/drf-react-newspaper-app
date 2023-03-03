@@ -1,11 +1,13 @@
-import "./article-view.css";
+import "../Articles/article-view.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function EditView(props) {
-	console.log("EditView props: ", props);
+	// console.log("EditView props: ", props);
 	const [post, setPost] = useState(props.currArticle);
 	const [edit, setEdit] = useState(false);
+	const navigate = useNavigate();
 	// console.log("EditView post: ", post);
 
 	useEffect(() => setPost(props.currArticle), [props.currArticle]);
@@ -47,6 +49,7 @@ function EditView(props) {
 			throw new Error(`Could not update post ${putPost}`);
 		}
 		const data = await response.json();
+		navigate("/profile");
 		// console.log("Update Draft PUT data: ", data)
 	};
 
@@ -74,6 +77,7 @@ function EditView(props) {
 			throw new Error(`Could not submit post ${putPost}`);
 		}
 		const data = await response.json();
+		navigate("/profile");
 		// console.log("Submit Draft PUT data: ", data)
 	};
 
@@ -101,6 +105,7 @@ function EditView(props) {
 			throw new Error(`Could not delete post ${putPost}`);
 		}
 		const data = await response.json();
+		navigate("/profile");
 		// console.log("Submit Draft PUT data: ", data)
 	};
 
@@ -141,7 +146,7 @@ function EditView(props) {
 					) : (
 						<p>Article text here</p>
 					)}
-					{post.author ? <h2>{post.author}</h2> : <div></div>}
+					{post.username ? <h2>By: {post.username}</h2> : <div></div>}
 					<div className="choice">
 						<button id="update" onClick={updateDraft} type="submit">
 							Update draft

@@ -1,0 +1,30 @@
+#new-post {
+    margin: 2rem;
+}
+
+#post-typing {
+    display: flex;
+    flex-direction: column;
+}
+#post-typing > label {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+#post-typing > * {
+    width: 90%;
+    margin: .5rem;
+}
+
+form > * {
+    color: white;
+    margin: 1rem;
+}
+
+#category-choice > * {
+    padding: 1rem;
+}
+
+input[type=radio]  {
+    margin: .5rem;
+    transform: scale(1.25);
+}

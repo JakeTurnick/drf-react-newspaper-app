@@ -7,8 +7,9 @@ import Main from "./Components/App/Main";
 import App from "./Components/App/App";
 import LoginForm from "./Components/Auth/Login";
 import SignupForm from "./Components/Auth/signup";
-import UserPosts from "./Components/User/UserPosts";
-import AdminPosts from "./Components/Articles/AdminPosts";
+import UserPosts from "./Components/Posts/UserPosts";
+import AdminPosts from "./Components/Posts/AdminPosts";
+import NewPost from "./Components/Posts/NewPost";
 import FourOFour from "./Components/errs/404";
 import Test from "./Components/Test/Test";
 import reportWebVitals from "./reportWebVitals";
@@ -22,6 +23,7 @@ root.render(
 					<Route default path="home" element={<App />} />
 					<Route path="profile" element={<UserPosts />} />
 					<Route path="review" element={<AdminPosts />} />
+					<Route path="new" element={<NewPost />} />
 					<Route path="login" element={<LoginForm />} />
 					<Route path="signup" element={<SignupForm />} />
 					<Route path="test" element={<Test />} />

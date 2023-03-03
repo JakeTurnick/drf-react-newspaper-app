@@ -20,6 +20,7 @@ function Main() {
 				isAuth={isAuth}
 				setAuth={setAuth}
 				currUser={currUser}
+				setCurrUser={setCurrUser}
 				isSu={isSu}
 				setIsSu={setIsSu}
 			/>

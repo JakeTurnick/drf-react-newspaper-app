@@ -1,8 +1,8 @@
-import "./article-view.css";
+import "../Articles/article-view.css";
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Cookies from "js-cookie";
-import ArticleList from "./ArticleList";
+import ArticleList from "../Articles/ArticleList";
 import PublishView from "./PublishView";
 
 const INITIAL_ARTICLE = {

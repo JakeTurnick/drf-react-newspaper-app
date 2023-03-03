@@ -72,6 +72,18 @@ class DraftRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
             return Post.objects.filter(pk=pk, author=self.request.user, is_submitted=False, is_published=False)
 
 
+class PostCreateAPIView(generics.CreateAPIView):
+    serializer_class = PostSerializer
+
+    def perform_create(self, serializer):
+        # # perform_create is built in -> we are OVERRIDING it
+        # book = self.kwargs['book']
+        # book_instance = get_object_or_404(Book, id=book)
+        # # hit Book model/table -> with ID of our kwarg in URL
+        # serializer.save(book=book_instance)
+        serializer.save(author=self.request.user)
+
+
 # class SubmittedListAPIView(generics.ListAPIView):
 #     serializer_class = PostSerializer
 

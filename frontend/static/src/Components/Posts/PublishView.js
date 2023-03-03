@@ -1,11 +1,13 @@
-import "./article-view.css";
+import "../Articles/article-view.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function PublishView(props) {
 	// console.log("PublishView props: ", props);
 	const [post, setPost] = useState(props.currArticle);
 	const [edit, setEdit] = useState(false);
+	const navigate = useNavigate();
 	// console.log("EditView post: ", post);
 
 	useEffect(() => setPost(props.currArticle), [props.currArticle]);
@@ -46,6 +48,7 @@ function PublishView(props) {
 			throw new Error(`Could not submit post ${putPost}`);
 		}
 		const data = await response.json();
+		navigate("/home");
 		// console.log("Submit Draft PUT data: ", data)
 	};
 
@@ -73,31 +76,32 @@ function PublishView(props) {
 			throw new Error(`Could not delete post ${putPost}`);
 		}
 		const data = await response.json();
+		navigate("/home");
 		// console.log("Submit Draft PUT data: ", data)
 	};
 
 	return (
-        <div className="publish-container">
-            {post ? (
-                <section id="edit-view">
-                    <div id="article-view">
-                        <h1>{post.title}</h1>
-                        <h2>By: {post.username}</h2>
-                        <p>{post.text}</p>
-                    </div>
-                    <div className="choice">
-                        <button id="publish" onClick={publishSubmit}>
-                            Publish submit
-                        </button>
-                        <button id="delete" onClick={deleteSubmit}>
-                            Delete submit
-                        </button>
-                    </div>
-                </section>
-            ) : (
-                <h1>No post selected</h1>
-            )}
-        </div>
+		<div className="publish-container">
+			{post ? (
+				<section id="edit-view">
+					<div id="article-view">
+						<h1>{post.title}</h1>
+						<p>{post.text}</p>
+						<h2>By: {post.username}</h2>
+					</div>
+					<div className="choice">
+						<button id="publish" onClick={publishSubmit}>
+							Publish submit
+						</button>
+						<button id="delete" onClick={deleteSubmit}>
+							Delete submit
+						</button>
+					</div>
+				</section>
+			) : (
+				<h1>No post selected</h1>
+			)}
+		</div>
 	);
 }
 

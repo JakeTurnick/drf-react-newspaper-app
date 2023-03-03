@@ -10,7 +10,7 @@ function ArticleView(props) {
 				<h1>Select an article</h1>
 			)}
 			{props.currArticle.username ? (
-				<h2>{props.currArticle.username}</h2>
+				<h2>By: {props.currArticle.username}</h2>
 			) : (
 				<div></div>
 			)}

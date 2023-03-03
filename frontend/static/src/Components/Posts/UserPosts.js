@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import ArticleList from "../Articles/ArticleList";
 import ArticleView from "../Articles/ArticleView";
-import EditView from "../Articles/EditView";
+import EditView from "./EditView";
 import Cookies from "js-cookie";
 import "./User-Posts.css";
 import { useNavigate } from "react-router-dom";
@@ -68,7 +68,7 @@ function UserPosts(props) {
 		<section>
 			<div id="user-post-title">
 				<h1>Your Posts:</h1>
-				<button onClick={() => navigate("/home")}>New post</button>
+				<button onClick={() => navigate("/new")}>New post</button>
 			</div>
 			<main>
 				<ArticleList articles={articles} setNewArticle={setNewArticle} />

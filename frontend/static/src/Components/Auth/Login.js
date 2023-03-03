@@ -73,7 +73,6 @@ function LoginForm(props) {
 
 	return (
 		<div id="form-container">
-			<button onClick={toggleAuth}>Toggle auth</button>
 			<form id="auth-form" onSubmit={handleSubmit}>
 				<div className="form-group">
 					<label htmlFor="username">Username</label>
